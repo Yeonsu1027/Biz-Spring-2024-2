@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html
+  lang="ko"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{/home}"
+>
+  <section layout:fragment="content">
+    <link
+      rel="stylesheet"
+      href="../../../static/css/user.css"
+      th:href="@{/static/css/user.css}"
+    />
+    <form th:action="@{/user/login}" method="POST" class="user login">
+      <div
+        class="error"
+        th:if="${session['SPRING_SECURITY_LAST_EXCEPTION'] != null}"
+        th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+      ></div>
+      <div>
+        <input type="text" placeholder="USERNAME" name="username" />
+      </div>
+      <div>
+        <input type="text" placeholder="PASSWORD" name="password" />
+      </div>
+      <div><input type="submit" value="로그인" /></div>
+    </form>
+  </section>
+</html>
